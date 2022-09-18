@@ -28,7 +28,7 @@ class ResultController extends Controller
 
     public function store(ResultRequest $request): RedirectResponse
     {
-        $result = Result::create($request->validated() + ['user_id' => auth()->id()]);
+        $result = Result::create($request->validated() + ['user_id' => "auth()->id()"]);
         $result->questions()->sync($request->input('questions', []));
 
         return redirect()->route('admin.results.index')->with([

@@ -20,6 +20,12 @@
 
                     <form method="POST" action="{{ route('client.test.store') }}">
                         @csrf
+
+                        <div class="form-group mb-4">
+                            <label for="nama-text">Nama</label>
+                            <input type="text" class="form-control" id="nama-text" placeholder="Masukan Nama" name="nama-text" value="" />
+                        </div>
+
                         @foreach($categories as $category)
                             <div class="card mb-3">
                                 <div class="card-header">{{ $category->name }}</div>

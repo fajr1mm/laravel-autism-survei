@@ -14,7 +14,7 @@
                     penyakit autis pada anak
                 </div>
                 <div class="text-lg mt-3 flex w-[350px] justify-start">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/test') }}">
                         <button class="py-2 px-4 bg-[#FF0000] hover:font-bold transition text-white shadow-xl font-medium" >
                             Mulai Survei
                         </button>

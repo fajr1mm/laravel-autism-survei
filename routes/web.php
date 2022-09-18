@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
+    return view('client.home');
+});
+
+Route::get('/test', function () {
     return redirect()->route('client.test');
 });
 
@@ -27,11 +30,11 @@ Route::get('/manual', function () {
     return view('client.manual');
 });
 
+Route::get('test',[\App\Http\Controllers\TestController::class, 'index'])->name('client.test');
+Route::post('test',[\App\Http\Controllers\TestController::class, 'store'])->name('client.test.store');
+Route::get('results/{result_id}',[\App\Http\Controllers\ResultController::class, 'show'])->name('client.results.show');
+
 Route::group(['middleware' => 'auth'], function() {
-   
-    Route::get('test',[\App\Http\Controllers\TestController::class, 'index'])->name('client.test');
-    Route::post('test',[\App\Http\Controllers\TestController::class, 'store'])->name('client.test.store');
-    Route::get('results/{result_id}',[\App\Http\Controllers\ResultController::class, 'show'])->name('client.results.show');
 
     // admin only
     Route::group(['middleware' => 'isAdmin','prefix' => 'admin', 'as' => 'admin.'], function() {
